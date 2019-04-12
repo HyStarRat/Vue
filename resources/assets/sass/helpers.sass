@@ -1,0 +1,7 @@
+
+$direction: "left" "right" "bottom" "top"
+
+@each $d in $direction
+    @for $i from 1 through 5
+        .m#{str-slice($d, 0 , 1)}-#{$i}
+           margin-#{$d}: #{$i * 5}px

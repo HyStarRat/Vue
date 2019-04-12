@@ -1,0 +1,33 @@
+stages:
+  - test
+  - build
+  - deploy
+
+test:
+  stage: test
+  script: echo "Running tests"
+
+build:
+  stage: build
+  script: echo "Building the app"
+
+deploy_staging:
+  stage: deploy
+  script:
+    - echo "Deploy to Dev N8Core"
+  environment:
+    name: staging
+    url: http://dev.n8core.com
+  only:
+  - master
+
+deploy_prod:
+  stage: deploy
+  script:
+    - echo "Deploy to Live Servers"
+  environment:
+    name: production
+    url: http://modapp.datehero.com, http://mach1.online, http://mod.n8core.com 
+  when: manual
+  only:
+  - master
